@@ -19,25 +19,10 @@ namespace Server_HafizhPratama_2017096
 		{
 			InitializeComponent();
 		}
-
+		ServiceHost hostObj = null;
 		private void Form1_Load(object sender, EventArgs e)
 		{
-			ServiceHost hostObj = null;
-			try
-			{
-				hostObj = new ServiceHost(typeof(Matematika));
-				hostObj.Open();
-				label1.Text = "Server ia Ready!!!";
-				Console.WriteLine("Server is Ready!!!");
-				Console.ReadLine();
-				hostObj.Close();
-			}
-			catch (Exception ex)
-			{
-				hostObj = null;
-				Console.WriteLine(ex.Message);
-				Console.ReadLine();
-			}
+			
 		}
 
 		private void button1_Click(object sender, EventArgs e)
@@ -47,10 +32,9 @@ namespace Server_HafizhPratama_2017096
 			{
 				hostObj = new ServiceHost(typeof(Matematika));
 				hostObj.Open();
-				label3.Text = "Server ia Ready!!!";
-				Console.WriteLine("Server is Ready!!!");
-				Console.ReadLine();
-				hostObj.Close();
+				label3.Text = "Server is Ready!!!";
+				button2.Enabled = true;
+				button1.Enabled = false;
 			}
 			catch (Exception ex)
 			{
@@ -70,9 +54,7 @@ namespace Server_HafizhPratama_2017096
 
 				button2.Enabled = false;
 				button1.Enabled = true;
-				Console.WriteLine("Server's OFF");
-				Console.ReadLine();
-				hostObj.Close();
+				label3.Text = "Server's OFF";
 			}
 			catch (Exception ex)
 			{
